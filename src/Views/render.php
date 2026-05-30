@@ -207,6 +207,7 @@ function shell(string $active, string $title, string $eyebrow, string $hero, str
     {$body}
     <footer>
       <div>donor-stewardship-ops-console · AGPL-3.0-or-later · synthetic demonstration data only</div>
+      <div><a href="https://github.com/mizcausevic-dev/">GitHub</a> · <a href="https://www.linkedin.com/in/mirzacausevic/">LinkedIn</a> · <a href="https://kineticgain.com/">Kinetic Gain</a></div>
       <div>Routes: / · /donor-lane · /stewardship-queue · /pledge-posture · /verification · /docs</div>
     </footer>
   </div>
