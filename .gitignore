@@ -1,0 +1,4 @@
+screenshots/app.stdout.log
+screenshots/app.stderr.log
+screenshots/*.log
+site/

@@ -1,0 +1,7 @@
+{
+  "name": "donor-stewardship-ops-console",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WordPress and nonprofit operator surface for donor follow-up, stewardship evidence, pledge-risk review, and acknowledgment-safe workflow posture.",
+  "license": "AGPL-3.0-or-later"
+}

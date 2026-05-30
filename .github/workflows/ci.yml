@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  php-release-gate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+      - name: Lint PHP files
+        shell: pwsh
+        run: |
+          $files = @(
+            'public/index.php',
+            'router.php',
+            'src/Services/MemberJourneyConsentKitService.php',
+            'src/Views/render.php',
+            'plugin/wordpress-member-journey-consent-kit.php',
+            'scripts/run_demo.php',
+            'scripts/prerender.php'
+          )
+          foreach ($file in $files) {
+            php -l $file
+          }
+      - name: Demo payload
+        run: php scripts/run_demo.php
+      - name: Prerender
+        run: php scripts/prerender.php
+      - name: Smoke check
+        shell: pwsh
+        run: powershell -ExecutionPolicy Bypass -File .\scripts\smoke_check.ps1
