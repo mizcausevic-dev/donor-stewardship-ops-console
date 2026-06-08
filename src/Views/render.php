@@ -296,6 +296,49 @@ HTML;
   <div class="sh"><h2>Overview</h2><div class="note">where donor trust drifts first</div></div>
   <div class="board">{$cards}</div>
 </section>
+<section class="section">
+  <div class="sh"><h2>Board questions this answers</h2><div class="note">exposure · savings · story</div></div>
+  <div class="board">
+    <article class="pcard">
+      <div class="ptop"><div class="pnum">01</div><div class="ppri">Exposure</div></div>
+      <h3>Which donor promises are at risk?</h3>
+      <p class="pdesc">The console separates stale pledge notes, missing acknowledgments, and unresolved stewardship follow-up before leadership repeats an outdated commitment.</p>
+      <ul class="check">
+        <li>Shows donor lanes that need executive, finance, or development repair.</li>
+        <li>Flags packets where proof and relationship narrative no longer match.</li>
+      </ul>
+    </article>
+    <article class="pcard">
+      <div class="ptop"><div class="pnum">02</div><div class="ppri">Focus</div></div>
+      <h3>Where should the team intervene first?</h3>
+      <p class="pdesc">Each lane ties the next action to an accountable owner so the fix is not another vague CRM task or fundraising reminder.</p>
+      <ul class="check">
+        <li>Prioritizes the donor packets most likely to create trust erosion.</li>
+        <li>Keeps stewardship repair work visible across development and leadership.</li>
+      </ul>
+    </article>
+    <article class="pcard">
+      <div class="ptop"><div class="pnum">03</div><div class="ppri">Narrative</div></div>
+      <h3>What story can leadership tell?</h3>
+      <p class="pdesc">The public surface demonstrates a board-readable operating layer for donor trust: promises, acknowledgments, evidence, and follow-up in one lane.</p>
+      <ul class="check">
+        <li>Turns stewardship into a reviewable operating system.</li>
+        <li>Supports nonprofit and foundation proof without exposing live donor data.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+<section class="section">
+  <div class="sh"><h2>Evidence model</h2><div class="note">what the lane proves</div></div>
+  <table class="ttbl">
+    <thead><tr><th>Signal</th><th>Owner</th><th>Required proof</th><th>Decision supported</th></tr></thead>
+    <tbody>
+      <tr><td><b>Acknowledgment freshness</b></td><td>Development operations</td><td>Sent date, message owner, donor-facing note, and follow-up window.</td><td>Whether a donor lane is safe for leadership outreach.</td></tr>
+      <tr><td><b>Pledge posture</b></td><td>Finance and stewardship</td><td>Commitment terms, payment state, exception note, and reconciliation owner.</td><td>Whether the pledge narrative can be used in reporting or campaign planning.</td></tr>
+      <tr><td><b>Relationship repair</b></td><td>Executive sponsor</td><td>Risk note, steward assignment, next action, and escalation state.</td><td>Which donor packet needs intervention before confidence degrades.</td></tr>
+    </tbody>
+  </table>
+</section>
 HTML;
 
     return shell(
@@ -461,7 +504,42 @@ HTML;
 
 function render_verification(): string
 {
-    return render_pledge_posture();
+    $body = <<<HTML
+<section class="section">
+  <div class="sh"><h2>Verification</h2><div class="note">operator-safe claims only</div></div>
+  <div class="board">
+    <article class="pcard">
+      <div class="ptop"><div class="pnum">A</div><div class="ppri">Synthetic</div></div>
+      <h3>No live donor data</h3>
+      <p class="pdesc">The public page uses synthetic stewardship packets only. It does not publish real donor names, giving history, CRM exports, or private foundation correspondence.</p>
+    </article>
+    <article class="pcard">
+      <div class="ptop"><div class="pnum">B</div><div class="ppri">Traceable</div></div>
+      <h3>Claims map to artifacts</h3>
+      <p class="pdesc">Every stewardship claim is framed as an evidence lane: acknowledgment, pledge posture, owner, follow-up state, and next repair action.</p>
+    </article>
+    <article class="pcard">
+      <div class="ptop"><div class="pnum">C</div><div class="ppri">Safe</div></div>
+      <h3>Built for review, not overclaim</h3>
+      <p class="pdesc">The surface is positioned as a public proof-of-work and operator model, not a promise of live nonprofit system integration.</p>
+    </article>
+  </div>
+</section>
+HTML;
+
+    return shell(
+        '/verification',
+        'Verification | Donor Stewardship Ops Console',
+        'verification',
+        'Prove the stewardship lane without exposing donor data.',
+        'The verification route explains what this public proof surface does and does not claim.',
+        $body,
+        [
+            ['label' => 'Data boundary', 'title' => 'Synthetic packets only', 'body' => 'No live donor, CRM, finance, or foundation data is published.'],
+            ['label' => 'Evidence posture', 'title' => 'Reviewable claims', 'body' => 'Each claim maps to an owner, packet state, and next action.'],
+            ['label' => 'Commercial fit', 'title' => 'Embedded by engagement', 'body' => 'The model can be adapted to real nonprofit systems with private data controls.'],
+        ]
+    );
 }
 
 function render_docs(): string
