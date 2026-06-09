@@ -23,6 +23,7 @@ function shell(string $active, string $title, string $eyebrow, string $hero, str
     $leadRecommendation = htmlspecialchars((string) $summary['leadRecommendation'], ENT_QUOTES);
     $rightCardsHtml = render_side_cards($rightCards);
     $nav = render_nav($active);
+    $productDepthHtml = render_product_depth();
 
     $safeTitle = htmlspecialchars($title, ENT_QUOTES);
     $safeEyebrow = htmlspecialchars($eyebrow, ENT_QUOTES);
@@ -155,6 +156,18 @@ function shell(string $active, string $title, string $eyebrow, string $hero, str
     .ttbl b{color:var(--text)}
     .st{font-family:var(--mono); font-size:10px; padding:4px 9px; border-radius:6px; letter-spacing:.1em; text-transform:uppercase; border:1px solid currentColor; display:inline-block}
     .st.good{color:var(--bert)} .st.watch{color:var(--warn)} .st.critical{color:var(--bad)}
+    .depth-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+    @media (max-width:1100px){.depth-grid{grid-template-columns:repeat(2,1fr)}} @media (max-width:640px){.depth-grid{grid-template-columns:1fr}}
+    .depth-card{
+      border:1px solid rgba(120,255,170,.16); border-radius:16px; padding:18px 20px;
+      background:
+        linear-gradient(180deg, rgba(11,18,32,.92), rgba(8,14,26,.70)),
+        rgba(11,18,32,.8);
+      min-height:190px;
+    }
+    .depth-card .kicker{font-family:var(--mono); font-size:10px; color:var(--bert); letter-spacing:.16em; text-transform:uppercase; margin-bottom:12px}
+    .depth-card h3{margin:0 0 10px; font-size:18px; line-height:1.25}
+    .depth-card p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.6}
     footer{
       margin-top:30px; padding-top:14px; border-top:1px dashed var(--line2);
       display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
@@ -204,15 +217,67 @@ function shell(string $active, string $title, string $eyebrow, string $hero, str
         <div class="kpi white"><div class="v mono">{$operatorPosture}</div><div class="lbl">Operator posture</div><div class="h">Donor trust treated like an operating system, not just a CRM reminder list.</div></div>
       </div>
     </section>
+    {$productDepthHtml}
     {$body}
     <footer>
       <div>donor-stewardship-ops-console · AGPL-3.0-or-later · synthetic demonstration data only</div>
-      <div><a href="https://github.com/mizcausevic-dev/">GitHub</a> · <a href="https://www.linkedin.com/in/mirzacausevic/">LinkedIn</a> · <a href="https://kineticgain.com/">Kinetic Gain</a></div>
+      <div><a href="https://github.com/mizcausevic-dev/donor-stewardship-ops-console">GitHub</a> · <a href="https://portfolio.kineticgain.com/">Portfolio</a> · <a href="https://suite.kineticgain.com/">Suite</a> · <a href="https://kineticgain.com/">Kinetic Gain</a></div>
       <div>Routes: / · /donor-lane · /stewardship-queue · /pledge-posture · /verification · /docs</div>
     </footer>
   </div>
 </body>
 </html>
+HTML;
+}
+
+function render_product_depth(): string
+{
+    return <<<HTML
+<section class="section">
+  <div class="sh"><h2>Product depth</h2><div class="note">why this is more than a stewardship dashboard</div></div>
+  <div class="board" style="margin-bottom:14px">
+    <article class="pcard">
+      <div class="ptop"><div class="pnum">01</div><div class="ppri">Product</div></div>
+      <h3>Donor Stewardship Ops Console turns relationship risk into an operating lane.</h3>
+      <p class="pdesc">It gives nonprofit, foundation, development, and executive teams one review surface for donor promises, acknowledgment state, pledge posture, and next follow-up action.</p>
+      <ul class="check">
+        <li>Non-technical leaders can see which donor packets are safe to advance.</li>
+        <li>Technical and ops reviewers can see the data model, API shape, proof artifacts, and release gates.</li>
+      </ul>
+    </article>
+    <article class="pcard">
+      <div class="ptop"><div class="pnum">02</div><div class="ppri">Common pattern</div></div>
+      <h3>What this has in common with the Kinetic Gain repo family.</h3>
+      <p class="pdesc">The repo converts a messy operational problem into a named control plane with UI routes, API payloads, validation checks, static proof, and an executive-readable narrative.</p>
+      <ul class="check">
+        <li>Same pattern: surface the risk, assign an owner, attach proof, and make the next move obvious.</li>
+        <li>Built as a public proof surface without exposing private donor, CRM, or finance data.</li>
+      </ul>
+    </article>
+  </div>
+  <div class="depth-grid">
+    <div class="depth-card">
+      <div class="kicker">SaaS GTM analyst</div>
+      <h3>Positioned around donor trust and campaign velocity.</h3>
+      <p>The page explains how better stewardship control reduces rework, avoids awkward donor touchpoints, and protects campaign confidence before board or executive review.</p>
+    </div>
+    <div class="depth-card">
+      <div class="kicker">Value architect</div>
+      <h3>Value is tied to risk avoided, not screen count.</h3>
+      <p>The evidence model shows where stale pledge notes, delayed acknowledgments, and owner ambiguity create visible operating drag.</p>
+    </div>
+    <div class="depth-card">
+      <div class="kicker">Product marketing</div>
+      <h3>Clear buyer language for non-technical readers.</h3>
+      <p>Development, finance, executive giving, and campaign teams can understand what the surface does without reading source code.</p>
+    </div>
+    <div class="depth-card">
+      <div class="kicker">Technical proof</div>
+      <h3>Routes, payloads, docs, and screenshots back the claim.</h3>
+      <p>The repo ships validation commands, WordPress plugin hooks, prerendered pages, JSON endpoints, screenshots, sitemap, and documentation.</p>
+    </div>
+  </div>
+</section>
 HTML;
 }
 

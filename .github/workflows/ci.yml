@@ -21,9 +21,9 @@ jobs:
           $files = @(
             'public/index.php',
             'router.php',
-            'src/Services/MemberJourneyConsentKitService.php',
+            'src/Services/DonorStewardshipOpsConsoleService.php',
             'src/Views/render.php',
-            'plugin/wordpress-member-journey-consent-kit.php',
+            'plugin/donor-stewardship-ops-console.php',
             'scripts/run_demo.php',
             'scripts/prerender.php'
           )
