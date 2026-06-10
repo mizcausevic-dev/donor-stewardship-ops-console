@@ -24,6 +24,7 @@ function shell(string $active, string $title, string $eyebrow, string $hero, str
     $rightCardsHtml = render_side_cards($rightCards);
     $nav = render_nav($active);
     $productDepthHtml = render_product_depth();
+    $commonPatternHtml = render_common_pattern();
 
     $safeTitle = htmlspecialchars($title, ENT_QUOTES);
     $safeEyebrow = htmlspecialchars($eyebrow, ENT_QUOTES);
@@ -218,6 +219,7 @@ function shell(string $active, string $title, string $eyebrow, string $hero, str
       </div>
     </section>
     {$productDepthHtml}
+    {$commonPatternHtml}
     {$body}
     <footer>
       <div>donor-stewardship-ops-console · AGPL-3.0-or-later · synthetic demonstration data only</div>
@@ -275,6 +277,37 @@ function render_product_depth(): string
       <div class="kicker">Technical proof</div>
       <h3>Routes, payloads, docs, and screenshots back the claim.</h3>
       <p>The repo ships validation commands, WordPress plugin hooks, prerendered pages, JSON endpoints, screenshots, sitemap, and documentation.</p>
+    </div>
+  </div>
+</section>
+HTML;
+}
+
+function render_common_pattern(): string
+{
+    return <<<HTML
+<section class="section">
+  <div class="sh"><h2>What these repos have in common</h2><div class="note">risk · owner · proof · next action</div></div>
+  <div class="depth-grid">
+    <div class="depth-card">
+      <div class="kicker">Risk surface</div>
+      <h3>Name the operating ambiguity.</h3>
+      <p>Each Kinetic Gain repo turns a vague coordination problem into an explicit lane that buyers, operators, and technical reviewers can inspect.</p>
+    </div>
+    <div class="depth-card">
+      <div class="kicker">Evidence packet</div>
+      <h3>Attach proof instead of relying on claims.</h3>
+      <p>The public artifact includes UI routes, JSON shape, validation commands, screenshots, docs, and synthetic data boundaries.</p>
+    </div>
+    <div class="depth-card">
+      <div class="kicker">Decision path</div>
+      <h3>Make the next move clear.</h3>
+      <p>The surface ties every issue to an owner, status, decision gate, and recommended action rather than leaving the reader with generic product copy.</p>
+    </div>
+    <div class="depth-card">
+      <div class="kicker">GTM narrative</div>
+      <h3>Connect product value to executive language.</h3>
+      <p>The page works for non-technical buyers, technical reviewers, SEO crawlers, and diligence readers because the same story is backed by inspectable implementation assets.</p>
     </div>
   </div>
 </section>

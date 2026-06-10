@@ -12,7 +12,7 @@ WordPress and nonprofit control plane for donor follow-up, stewardship evidence,
 
 This repo demonstrates the donor-stewardship primitive for Kinetic Gain Embedded: follow-up evidence, pledge posture, executive handoff notes, and campaign-safe donor routing exposed through one operator surface. In a real embedded setting, the same primitive lets nonprofits and foundations keep stewardship workflow, donor messaging, and finance-safe review aligned without shipping outreach changes blindly.
 
-## What this product does
+## Product depth
 
 Donor Stewardship Ops Console turns relationship risk into an operating lane. It gives nonprofit, foundation, development, finance, campaign, and executive-giving teams one review surface for donor promises, acknowledgment state, pledge posture, evidence packets, owner assignment, and next follow-up action.
 
